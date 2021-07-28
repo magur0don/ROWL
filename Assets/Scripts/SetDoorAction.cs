@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 public class SetDoorAction : MonoBehaviour
@@ -9,7 +10,15 @@ public class SetDoorAction : MonoBehaviour
 
     public Animator animator;
 
-    public bool IsGirlOnly;
+    public enum DoorOpenRestriction
+    {
+        Invalide = -1,
+        IsGirlOnly,
+        IsBoyOnly,
+        IsGetKeyItem
+    };
+
+    public DoorOpenRestriction ThisDoorOpenRestriction = DoorOpenRestriction.Invalide;
 
     public string OnlyTag = string.Empty;
 
@@ -17,23 +26,35 @@ public class SetDoorAction : MonoBehaviour
 
     private void Start()
     {
-        if (IsGirlOnly == true)
+        switch (ThisDoorOpenRestriction)
         {
-            OnlyTag = "GirlCharacter";
-        }
-        else
-        {
-            OnlyTag = "BoyCharacter";
+            case DoorOpenRestriction.Invalide:
+                break;
+            case DoorOpenRestriction.IsBoyOnly:
+                OnlyTag = "BoyCharacter";
+                break;
+            case DoorOpenRestriction.IsGirlOnly:
+                OnlyTag = "GirlCharacter";
+                break;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != OnlyTag)
+        if (ThisDoorOpenRestriction == DoorOpenRestriction.IsGetKeyItem &&
+            GameFlagDefine.GameFlagDictionary[GameFlagDefine.GameFlag.KeyItemGet])
         {
-            notOnlyAICharacter = other.GetComponent<AICharacterControl>();
-            notOnlyAICharacter.Stop = true;
+            SceneManager.LoadScene("ResultScene");
             return;
+        }
+        if (ThisDoorOpenRestriction != DoorOpenRestriction.Invalide)
+        {
+            if (other.tag != OnlyTag)
+            {
+                notOnlyAICharacter = other.GetComponent<AICharacterControl>();
+                notOnlyAICharacter.Stop = true;
+                return;
+            }
         }
         if (!isOpen)
         {
@@ -44,9 +65,12 @@ public class SetDoorAction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag != OnlyTag)
+        if (ThisDoorOpenRestriction != DoorOpenRestriction.Invalide)
         {
-            return;
+            if (other.tag != OnlyTag)
+            {
+                return;
+            }
         }
         if (isOpen)
         {
@@ -58,5 +82,4 @@ public class SetDoorAction : MonoBehaviour
             animator.SetBool("IsOpen", isOpen);
         }
     }
-
 }

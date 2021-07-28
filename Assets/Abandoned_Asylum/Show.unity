@@ -801,6 +801,18 @@ MonoBehaviour:
   GirlCharacter: {fileID: 1637676906}
   BoyCharacter: {fileID: 1017882173}
   autoCam: {fileID: 265926381}
+--- !u!114 &265926378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265926376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb917a324fc957749943648b7013c7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &265926381 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11400000, guid: baec086904791744185aaa07a6cf55c2, type: 3}
@@ -2253,7 +2265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f95a72b8433b1468ad6281e228ddf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsGirlOnly: 0
+  DoorOpenRestriction: 0
 --- !u!1 &739211510
 GameObject:
   m_ObjectHideFlags: 0
@@ -5152,6 +5164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dialogue: {fileID: 1775665943}
+  GameFlag: 1
 --- !u!1 &1747911045
 GameObject:
   m_ObjectHideFlags: 0
@@ -5436,7 +5449,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\u3042\u3042\u3042\u3042"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ba3af991ed68954c8888e4ed416381e, type: 2}
   m_sharedMaterial: {fileID: 5961249001222793611, guid: 1ba3af991ed68954c8888e4ed416381e, type: 2}
@@ -6254,7 +6267,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f95a72b8433b1468ad6281e228ddf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsGirlOnly: 1
+  DoorOpenRestriction: -1
+--- !u!1 &8606311150561899609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8604367122496853544, guid: beef3bcde1610f04aa96275436147bb9, type: 3}
+  m_PrefabInstance: {fileID: 8606311150561899606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8606311150561899610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8606311150561899609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f95a72b8433b1468ad6281e228ddf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoorOpenRestriction: 2
 --- !u!95 &8606311150561899613
 Animator:
   serializedVersion: 3
