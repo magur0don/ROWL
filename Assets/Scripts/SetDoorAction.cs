@@ -60,6 +60,7 @@ public class SetDoorAction : MonoBehaviour
         {
             isOpen = true;
             animator.SetBool("IsOpen", isOpen);
+            SoundManager.Instance.PlaySESound("OpenDoor");
         }
     }
 
@@ -80,6 +81,7 @@ public class SetDoorAction : MonoBehaviour
             }
             isOpen = false;
             animator.SetBool("IsOpen", isOpen);
+            SoundManager.Instance.PlaySESound("NotOpenDoor");
         }
     }
 }
