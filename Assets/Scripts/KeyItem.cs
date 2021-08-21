@@ -8,8 +8,29 @@ public class KeyItem : MonoBehaviour
 
     public GameFlagDefine.GameFlag GameFlag;
 
+    private ParticleSystem itemParticleSystem;
+
+    private void Start()
+    {
+        itemParticleSystem = GetComponentInChildren<ParticleSystem>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        itemParticleSystem.Stop();
+        
+        if (GameFlag == GameFlagDefine.GameFlag.ManKeyItemGet)
+        {
+            if (other.gameObject.tag != "BoyCharacter")
+            {
+                return;
+            }
+            // 協力ポイントをセットする
+            CooparationJudge.Instance.SetCooperationPoint(CooperationParam.CooperationIndex.ManKeyItemGet);
+            Dialogue.DisplayDialogue("男らしいことができた");
+            return;
+        }
+
         if (!GameFlagDefine.GetGameFlag(GameFlag))
         {
             GameFlagDefine.SetGameFlag(GameFlag);

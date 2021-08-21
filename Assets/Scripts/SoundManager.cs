@@ -50,6 +50,7 @@ public class SoundManager : MonoBehaviour
                     AudioSESource[i].Play();
                 };
             }
+            break;
         }
     }
 

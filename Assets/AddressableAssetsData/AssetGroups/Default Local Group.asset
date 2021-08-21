@@ -30,7 +30,13 @@ MonoBehaviour:
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 75ea84a998158f8458c05dd58362cade
-    m_Address: Assets/Sound/SE/NotOperDoor.mp3
+    m_Address: Assets/Sound/SE/NotOpenDoor.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 8300000, guid: 75ea84a998158f8458c05dd58362cade, type: 3}
+    m_TargetAsset: {fileID: 8300000, guid: 75ea84a998158f8458c05dd58362cade, type: 3}
+  - m_GUID: cecc48c52dbb64949bf954574fcd4883
+    m_Address: Assets/MasterData/CooperationParam.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
